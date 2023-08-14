@@ -4,6 +4,7 @@ if (isNaN(firstValue)) {
   console.log('Incorrect input');
 } else {
   const secondValue = prompt('Enter second number', '');
+
   if (isNaN(secondValue)) {
     console.log('Incorrect input');
   } else {
@@ -13,8 +14,7 @@ if (isNaN(firstValue)) {
 
 function calculateSumAndQuotient(first, second) {
   if (!first || !second) {
-    console.log('Enter number!');
-    return;
+    return console.log('Enter number!');
   }
 
   console.log(`Answer: ${first + second}, ${first / second}`);

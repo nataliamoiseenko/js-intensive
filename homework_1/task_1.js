@@ -4,6 +4,7 @@ if (!firstValue) {
   console.log('Enter first number!');
 } else {
   const secondValue = prompt('Enter second number', '');
+
   if (!secondValue) {
     console.log('Enter second number!');
   } else {
@@ -13,13 +14,11 @@ if (!firstValue) {
 
 function handleValues(first, second) {
   if (isNaN(first) || isNaN(second)) {
-    console.log('Incorrect input');
-    return;
+    return console.log('Incorrect input');
   }
 
   if (second % 1 !== 0) {
-    console.log('Second number needs to be a whole integer');
-    return;
+    return console.log('Second number needs to be a whole integer');
   }
 
   console.log(first.toString(second));
