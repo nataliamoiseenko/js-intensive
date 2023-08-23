@@ -1,43 +1,28 @@
-function concatStrings(first, separator = '') {
+function concatStrings(startString, separator = '') {
   if (typeof separator !== 'string') {
     separator = '';
   }
 
-  function concatSecondString(second) {
-    if (typeof second !== 'string') {
-      return first + separator;
+  let concated = startString + separator;
+
+  function recursiveConcatStrings(newString) {
+    if (newString === undefined || typeof newString !== 'string') {
+      return concated;
     }
 
-    function concatThirdString(third) {
-      if (typeof third !== 'string') {
-        return first + separator + second;
-      }
+    concated = concated + newString + separator;
 
-      return () => {
-        return first + separator + second + separator + third;
-      };
-    }
-
-    return concatThirdString;
+    return recursiveConcatStrings;
   }
 
-  return concatSecondString;
+  return recursiveConcatStrings;
 }
 
 
 class Calculator {
   constructor(firstNum, secondNum) {
-    if (firstNum === undefined || secondNum === undefined) {
-      throw new Error('Error: input is incorrect!');
-    }
-
-    if (
-        typeof firstNum !== 'number' || typeof secondNum !== 'number'
-        || isNaN(firstNum) || isNaN(secondNum)
-        || !(Number.isFinite(firstNum)) || !(Number.isFinite(secondNum))
-    ) {
-      throw new Error('Error: input is not a number!');
-    }
+    this.checkForNumberType(firstNum);
+    this.checkForNumberType(secondNum);
 
     this.firstNum = firstNum;
     this.secondNum = secondNum;
